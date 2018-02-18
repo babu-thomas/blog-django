@@ -84,3 +84,12 @@ class BlogTests(TestCase):
         self.client.login(username='testuser', password='secret')
         response = self.client.get(reverse('post_detail', args=[1]))
         self.assertContains(response, '+ Delete Blog Post')
+
+    def test_no_new_post_if_logged_out(self):
+        response = self.client.get(reverse('post_detail', args=[1]))
+        self.assertNotContains(response, '+ New Blog Post')
+
+    def test_new_post_if_logged_in(self):
+        self.client.login(username='testuser', password='secret')
+        response = self.client.get(reverse('post_detail', args=[1]))
+        self.assertContains(response, '+ New Blog Post')
