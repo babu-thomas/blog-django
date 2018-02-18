@@ -1,7 +1,7 @@
-# Blog using Django
+# Blog using Django ([Link](https://blog-django-babu-thomas.herokuapp.com/))
 A basic (ugly) blog application made for learning [Django](https://www.djangoproject.com/). Supports [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations for the blog posts, login and signup functionality. Made by following the awesome [Django for Beginners](https://djangoforbeginners.com/) tutorials by [William Vincent](https://wsvincent.com/).
 
-## Running
+## Running locally
 Run all commands below in the repository root folder.
 1. Install [Pipenv](http://pipenv.readthedocs.io/en/latest/): `pip install pipenv`
 2. Install all dependencies using Pipenv: `pipenv install`
