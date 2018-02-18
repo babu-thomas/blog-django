@@ -66,3 +66,12 @@ class BlogTests(TestCase):
     def test_post_delete_view(self):
         response = self.client.get(reverse('post_delete', args=[1]))
         self.assertEqual(response.status_code, 200)
+
+    def test_no_edit_post_if_logged_out(self):
+        response = self.client.get(reverse('post_detail', args=[1]))
+        self.assertNotContains(response, '+ Edit Blog Post')
+
+    def test_edit_post_if_logged_in(self):
+        self.client.login(username='testuser', password='secret')
+        response = self.client.get(reverse('post_detail', args=[1]))
+        self.assertContains(response, '+ Edit Blog Post')
