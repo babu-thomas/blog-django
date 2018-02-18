@@ -58,11 +58,13 @@ class BlogTests(TestCase):
         self.assertContains(response, 'New text')
 
     def test_post_update_view(self):
-        response = self.client.post(reverse('post_edit', args=[1]), {
+        self.client.login(username='testuser', password='secret')
+        self.client.post(reverse('post_edit', args=[1]), {
             'title': 'Updated title',
             'body': 'Updated text',
         })
-        self.assertEqual(response.status_code, 302)
+        response = self.client.get(reverse('post_detail', args=[1]))
+        self.assertContains(response, 'Updated title')
 
     def test_post_delete_view(self):
         self.client.login(username='testuser', password='secret')
